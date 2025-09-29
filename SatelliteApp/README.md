@@ -9,48 +9,51 @@ This project is a **Satellite Control System** that allows users to create, mana
 The Command pattern encapsulates all the information needed to perform satellite operations. This pattern enables flexible operation execution and easy addition of new commands.
 
 **Available Commands:**
-- `SatelliteRotate`: Rotates the satellite to a specified direction.
-- `SolarPanelManager`: Activates or deactivates solar panels.
-- `CameraOperation`: Turns the satellite camera on or off.
-- `DataCollector`: Collects data from the satellite.
-- `CameraCapture`: Captures images in the current satellite orientation.
-- `ThermalSensorAdapter`: Reads thermal sensor data.
-- `CreateSatellite`: Creates a custom satellite.
-- `DefaultSatellite`: Creates a default satellite configuration.
-- `GetState`: Retrieves the current state of a satellite.
-- `GetList`: Lists all available satellites.
+- [`SatelliteRotate`](src/main/commands/SatelliteRotate.java): Rotates the satellite to a specified direction.
+- [`SolarPanelManager`](src/main/commands/SolarPanelManager.java): Activates or deactivates solar panels.
+- [`CameraOperation`](src/main/commands/CameraOperation.java): Turns the satellite camera on or off.
+- [`DataCollector`](src/main/commands/DataCollector.java): Collects data from the satellite.
+- [`CameraCapture`](src/main/commands/CameraCapture.java): Captures images in the current satellite orientation.
+- [`ThermalSensorAdapter`](src/main/commands/ThermalSensorAdapter.java): Reads thermal sensor data (Simulation using Random Values).
+- [`CreateSatellite`](src/main/commands/CreateSatellite.java): Creates a custom satellite based on the user given inputs.
+- [`DefaultSatellite`](src/main/commands/DefaultSatellite.java): Creates a default satellite configuration, two options available (1.With Camera / 2. Without Camera).
+- [`GetState`](src/main/commands/GetState.java): Retrieves the current state of a given(user input) satellite.
+- [`GetList`](src/main/commands/GetList.java): Lists all available satellites.
 
 ### Builder Pattern
 The Builder pattern is used to construct satellite objects with various configurations. This pattern provides a flexible way to create satellites with different features.
 
 **Builder Class:**
-- `Builder`: Constructs satellites with customizable properties (name, orientation, solar panels, data collection, camera).
+- [`Builder`](src/main/builder/Builder.java): Constructs satellites with customizable properties (name, orientation, solar panels, data collection, camera).
+- We can either add camera or not while creating the Satellite using `CreateSatellite`
 
 ### Observer Pattern
 The Observer pattern is implemented to notify the dashboard whenever satellite states change. This ensures real-time updates of the satellite monitoring interface.
 
 **Components:**
-- `SatelliteManager`: Acts as the Subject, managing observers and notifying them of changes.
-- `Dashboard`: Observes satellite changes and updates the display table automatically.
+- [`SatelliteManager`](src/main/core/SatelliteManager.java): Acts as the Subject, managing observers and notifying them of changes.
+- [`Dashboard`](src/main/core/Dashboard.java): Observes satellite changes and updates the display table automatically.
 
 ### Decorator Pattern
 The Decorator pattern is used to dynamically add features (camera and thermal sensors) to existing satellites without modifying their structure.
 
 **Decorators:**
-- `AddCameraDecorator`: Adds camera functionality to a satellite.
-- `AddSensorDecorator`: Adds thermal sensor capability to a satellite.
+- [`AddCameraDecorator`](src/main/decorator/AddCameraDecorator.java): Adds camera functionality to a satellite after creating object.
+- [`AddSensorDecorator`](src/main/decorator/AddSensorDecorator.java): Adds thermal sensor capability to a satellite after creating object.
 
 ### Adapter Pattern
 The Adapter pattern bridges the gap between the satellite system and external sensor interfaces.
 
 **Adapter:**
-- `ThermalSensorAdapter`: Adapts the thermal sensor interface to work with the satellite command system.
+- [`ThermalSensorAdapter`](src/main/commands/ThermalSensorAdapter.java): Adapts the thermal sensor interface to work with the satellite command system.
+- It acts like a command to `SatelliteCommand` interface but inside it have methods from the `ThermalSensor`, which is not a child for the `SatelliteCommand` Interface
 
 ### Factory Pattern
 The Factory pattern creates command objects based on string identifiers, centralizing command instantiation logic.
 
 **Factory:**
-- `SatelliteCommandFactory`: Creates appropriate command objects based on operation type.
+- [`SatelliteCommandFactory`](src/main/factories/SatelliteCommandFactory.java): Creates appropriate command objects based on operation type.
+- It simply returns the Object for the needed Commands based on the user input.
 
 ## Features
 
@@ -236,7 +239,7 @@ The application handles various error scenarios:
 SatelliteApp/
 ├── main/
 │   ├── app/
-│   │   └── SatelliteApp.java          # Main application entry point
+│   │   └── SatelliteApp.java          # Main file 
 │   ├── builder/
 │   │   └── Builder.java                # Satellite builder
 │   ├── commands/
@@ -284,6 +287,8 @@ The satellite uses an 8-directional system with meaningful facing descriptions:
 | NW        | North-East Horizon     |
 | SE        | South-West Horizon     |
 | SW        | South-West Horizon     |
+
+- We have given the direction in the enum file for future scaling 
 
 ## Edge Cases
 
