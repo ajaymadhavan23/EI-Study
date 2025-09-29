@@ -90,7 +90,7 @@ The system automatically updates the dashboard whenever any satellite state chan
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/ajaymadhavan23/EI-Study
    ```
 
 2. Navigate to the project directory:
