@@ -60,7 +60,7 @@ public class DefaultSatellite implements SatelliteCommand {
 
         System.out.println("Default Satellite '" + name + "' created! Camera: " + (withCamera ? "Yes" : "No"));
 
-        //  ADD TO DASHBOARD
+        //  Add to Dashboard / Manager
         manager.addSatellite(sat);
     }
 }

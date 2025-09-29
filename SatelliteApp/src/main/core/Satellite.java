@@ -21,8 +21,7 @@ public class Satellite {
         this.camera = camera;
     }
 
-
-    // Orientation
+    // Getter/ Setter methods
     public Direction getOrientation() {
         return orientation;
     }
@@ -40,7 +39,6 @@ public class Satellite {
         this.solarpanals = solarpanals;
     }
 
-    // Data collection
     public int getDatacollected() {
         return datacollected;
     }

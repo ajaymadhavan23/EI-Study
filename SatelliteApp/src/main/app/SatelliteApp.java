@@ -36,8 +36,7 @@ public class SatelliteApp {
                 if (input.equals("1") || input.equals("2") || input.equals("3")) {
                     mainChoice = input;
                 } else {
-                    LoggerUtil.logError("Invalid menu choice!");
-                    LoggerUtil.logInfo("Enter 1, 2, or 3");
+                    LoggerUtil.logError("Invalid menu choice!, Enter 1, 2, or 3");
                     System.out.println();
                 }
             }
@@ -46,8 +45,7 @@ public class SatelliteApp {
                 switch (mainChoice) {
                     case "1": // Satellite Operations
                         if (satellites.isEmpty()) {
-                            LoggerUtil.logError("No satellites available.");
-                            LoggerUtil.logInfo("Please create a satellite first.");
+                            LoggerUtil.logError("No satellites available, Please create a satellite first.");
                             System.out.println();
                             break;
                         }
@@ -133,8 +131,6 @@ public class SatelliteApp {
                                 } else if (createOpt.equals("2")) {
                                     CreateSatellite createCmd = new CreateSatellite(satellites,manager);
                                     createCmd.execute();
-                                    Satellite newSat = createCmd.getSatellite();
-                                    satellites.add(newSat);
                                     System.out.println("Total satellites: " + satellites.size());
                                 }
                                 else{

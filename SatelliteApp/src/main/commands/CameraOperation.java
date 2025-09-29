@@ -12,7 +12,6 @@ public class CameraOperation implements SatelliteCommand {
     private Satellite satellite;
     private SatelliteManager manager;
 
-    // Constructor now takes manager
     public CameraOperation(Satellite satellite, SatelliteManager manager) {
         this.satellite = satellite;
         this.manager = manager;

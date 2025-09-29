@@ -121,13 +121,8 @@ public class CreateSatellite implements SatelliteCommand {
         System.out.println("Satellite '" + name + "' created successfully!");
         this.satellite = newSatellite;
 
-        // ADD ONLY TO MANAGER
+        // Add to the manager
         manager.addSatellite(newSatellite);
-
-        // SYNC existingSatellites AFTER adding to manager
-        existingSatellites.clear();
-        existingSatellites.addAll(manager.getSatellites());
-
     }
 
     public Satellite getSatellite() {

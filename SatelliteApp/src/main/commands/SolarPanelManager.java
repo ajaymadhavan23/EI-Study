@@ -32,7 +32,7 @@ public class SolarPanelManager implements SatelliteCommand {
                         satellite.setSolarpanals(true);
                         System.out.println("Solar panels activated.");
 
-                        //  UPDATE DASHBOARD
+                        //  Update to Dash Board
                         manager.updateSatellite(satellite);
                     } else {
                         LoggerUtil.logError("Solar panels already activated.");
@@ -45,7 +45,7 @@ public class SolarPanelManager implements SatelliteCommand {
                         satellite.setSolarpanals(false);
                         System.out.println("Solar panels deactivated.");
 
-                        //  UPDATE DASHBOARD
+                        // Update to Dashboard
                         manager.updateSatellite(satellite);
                     } else {
                         LoggerUtil.logError("Solar panel already inactive.");
